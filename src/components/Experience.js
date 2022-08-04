@@ -1,72 +1,62 @@
-import React, { useState } from 'react'
-    
-function Experience() {
-    const [experienceFields, setFormFields] = useState([
-        {company: '', role: '', from: '', to: ''}
-    ])
+import React from 'react'
 
-    const handleFormChange = (event, index) => {
-        let data = [...experienceFields]
-        data[index][event.target.name] = event.target.value
-        setFormFields(data)
-    }
 
-    const addExperience = () => {
-        let object = {
-            company: '',
-            role: '',
-            from: '',
-            to: ''
-        }
-
-        setFormFields([...experienceFields, object])
-
-    }
-
-    const removeExperience = (index) => {
-        let data = [...experienceFields];
-        data.splice(index,1)
-        setFormFields(data)
-    }
+function Experience({ formData, setFormData }) {
 
     return (
-        <div className='eductation-container'>
-            <form>
-                {experienceFields.map((form, index) => {
-                    return (
-                        <div key={index}>
+        <div className='experience'>
+                        <div className='experience-container'>
                             <input
-                                name='company'
+                                type='text'
                                 placeholder='Company'
-                                onChange={event => handleFormChange(event, index)}
-                                value={form.company}
+                                onChange={(event) => setFormData({...formData, company1: event.target.value })}
+                                value={formData.company1}
                             />
                             <input
-                                name='role'
+                                type='text'
                                 placeholder='Role'
-                                onChange={event => handleFormChange(event, index)}
-                                value={form.role}
+                                value={formData.role1}
+                                onChange={(event) => setFormData({...formData, role1: event.target.value })}
+                                
                             />
                             <input
-                                name='from'
+                                type='text'
                                 placeholder='From'
-                                onChange={event => handleFormChange(event, index)}
-                                value={form.from}
+                                onChange={(event) => setFormData({...formData, from3: event.target.value })}
+                                value={formData.from3}
                             />
                             <input
-                                name='to'
+                                type='text'
                                 placeholder='To'
-                                onChange={event => handleFormChange(event, index)}
-                                value={form.to}
+                                onChange={(event) => setFormData({...formData, to3: event.target.value })}
+                                value={formData.to3}
                             />
-                            <button type='button' onClick={removeExperience}>Remove</button>
-                    </div>
-                    
-                    )
-                })}
-                 
-            </form>
-                <button onClick={addExperience}>Add</button>
+                            <input
+                                type='text'
+                                placeholder='Company'
+                                onChange={(event) => setFormData({...formData, company2: event.target.value })}
+                                value={formData.company2}
+                            />
+                            <input
+                                type='text'
+                                placeholder='Role'
+                                value={formData.role2}
+                                onChange={(event) => setFormData({...formData, role2: event.target.value })}
+                                
+                            />
+                            <input
+                                type='text'
+                                placeholder='From'
+                                onChange={(event) => setFormData({...formData, from4: event.target.value })}
+                                value={formData.from4}
+                            />
+                            <input
+                                type='text'
+                                placeholder='To'
+                                onChange={(event) => setFormData({...formData, to4: event.target.value })}
+                                value={formData.to4}
+                            />
+                </div>
         </div>
     )
 }

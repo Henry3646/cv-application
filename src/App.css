@@ -1,0 +1,8 @@
+.App {
+ display: flex;
+ justify-content: center;
+ padding-top: 100px;
+ height: 100vh;
+ width: 100vw;
+ background-image: linear-gradient(to bottom right, #2de2e6, #035ee8, #f6019d, #d40078);
+}
