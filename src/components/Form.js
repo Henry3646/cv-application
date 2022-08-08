@@ -3,9 +3,10 @@ import Personal from './Personal'
 import Education from './Education'
 import Experience from './Experience'
 import Skills from './Skills'
-
+import Final from './Final'
 import './Form.css'
 
+let done = false
 function Form() {
 
     const [page, setPage] = useState(0);
@@ -29,11 +30,20 @@ function Form() {
         company2: "",
         role2: "",
         from4: "",
-        to4: ""
+        to4: "",
+        skill1: "",
+        skill2: "",
+        skill3: "",
+        skill4: "",
+        skill5: "",
+        skill6: "",
+        skill7: ""
 
     })
 
-    const FormTitles = ["Personal Information", "Education", "Experience", "Skills"];
+    
+
+    const FormTitles = ["Personal Information", "Education", "Experience", "Skills", "Final"];
 
     const Step = () => {
         if (page === 0){
@@ -42,11 +52,15 @@ function Form() {
             return <Education formData={formData} setFormData={setFormData}/>
         } else if (page === 2) {
             return <Experience formData={formData} setFormData={setFormData}/>
-        } else {
+        } else if (page === 3) {
             return <Skills formData={formData} setFormData={setFormData}/>
+        } else {
+            return <Final formdata={formData} setFormData={setFormData}/>
         }
     }
 
+
+    if (done != true){
     return (
         <div className='form'>
             <div className='form-container'>
@@ -64,13 +78,15 @@ function Form() {
 
                     <button 
                     onClick = {() => {
-                        if (page === FormTitles.length -1 ){
+                        
+                        if (page === FormTitles.length -2 ){
+                            done = true
 
-                        }
-                        else {setPage((currPage) => currPage + 1)
+                            setPage((currpage) => currpage + 1)
+                        }else {setPage((currPage) => currPage + 1)
                         }}}
                     >
-                        {page === FormTitles.length -1 ? "Submit" : "Next"}
+                        {page === FormTitles.length -2 ? "Submit" : "Next"}
                         </button>
 
                 </div>
@@ -78,6 +94,11 @@ function Form() {
             </div>
         </div>
     )
+                    } else { return (
+                        <Final formData={formData}/>
+                    )}
+                
 }
 
 export default Form;
+export {done};
